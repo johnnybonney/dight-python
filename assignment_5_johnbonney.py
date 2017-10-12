@@ -4,6 +4,10 @@ Created on Tue Oct 10 18:24:47 2017
 @author: johnf
 
 DIGHT360 - Homework 5 - text analysis
+
+Note: Regarding the title line of the output, there are multiple tabs to make
+sure the tab-delimited file is easy to read. Can be easily changed to have
+a consistent number of tabs (if it were to be imported as a csv or something).
 """
 
 import os
@@ -31,6 +35,7 @@ for file in glob('*[0-9].txt'):
         for line in f:
             if re.search('<[hp]>', line):
                 words = word_tokenize(line.lower())
+                words = words[3:]  # remove the <p>/<h> tags
                 for word in words:
                     if re.search(regex1, word):
                         pronouns += 1
